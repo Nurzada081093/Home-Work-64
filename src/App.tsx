@@ -1,9 +1,11 @@
+import MyBlog from './Containers/MyBlog/MyBlog.tsx';
+
 const App = () => {
 
   return (
-    <>
-      I'm starting my homework #64! ^_^
-    </>
+    <div>
+      <MyBlog/>
+    </div>
   );
 };
 
