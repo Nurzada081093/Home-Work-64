@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Container, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
-
+import SearchIcon from '@mui/icons-material/Search';
 
 const ToolBar = () => {
   return (
@@ -24,9 +24,12 @@ const ToolBar = () => {
                 My Blog
               </Typography>
               <Button color="inherit" to="/" component={NavLink}>Home</Button>
-              <Button color="inherit" to="/new-post" component={NavLink}>Add</Button>
+              <Button color="inherit" to="/posts/add" component={NavLink}>Add</Button>
               <Button color="inherit" to="/about" component={NavLink}>About</Button>
               <Button color="inherit" to="/contacts" component={NavLink}>Contacts</Button>
+              <IconButton color="inherit" sx={{marginLeft: '20px'}}>
+                <SearchIcon />
+              </IconButton>
             </Toolbar>
           </Container>
         </AppBar>

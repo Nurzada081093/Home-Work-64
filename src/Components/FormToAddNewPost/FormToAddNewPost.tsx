@@ -1,15 +1,14 @@
 import { Button, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import Textarea from '@mui/joy/Textarea';
 import * as React from 'react';
 import { useState } from 'react';
 import { INewPost } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
+import { Textarea } from '@mui/joy';
 
 const initialForm = {
   title: '',
   description: '',
-  message: '',
 };
 
 const FormToAddNewPost = () => {
@@ -25,12 +24,19 @@ const FormToAddNewPost = () => {
     }));
   };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement | HTMLTextAreaElement>) => {
     e.preventDefault();
 
-    await axiosAPI.post('posts.json', {...newPost});
-
-    setNewPost(initialForm);
+    if (newPost.title.trim().length === 0 || newPost.description.trim().length === 0) {
+      alert('Please enter a title and description!');
+    } else {
+      try {
+        await axiosAPI.post('posts.json', {...newPost});
+        setNewPost(initialForm);
+      } catch (e) {
+        alert(e);
+      }
+    }
   };
 
   return (
@@ -51,29 +57,17 @@ const FormToAddNewPost = () => {
               variant="outlined"
               value={newPost.title}
               onChange={onChangeField}
-              required
-            />
-          </Grid>
-          <Grid size={12}>
-            <TextField
-              sx={{width: '100%'}}
-              id="outlined-basic"
-              label="Description"
-              name="description"
-              variant="outlined"
-              value={newPost.description}
-              onChange={onChangeField}
-              required
             />
           </Grid>
           <Grid size={12}>
             <Textarea
-              placeholder="Message..."
-              minRows={4}
-              value={newPost.message}
-              name="message"
+              id="outlined-basic"
+              variant="outlined"
+              placeholder="Description..."
+              minRows={5}
+              value={newPost.description}
+              name="description"
               onChange={onChangeField}
-              required
             />
           </Grid>
           <Grid size={12}>
@@ -89,3 +83,4 @@ const FormToAddNewPost = () => {
 };
 
 export default FormToAddNewPost;
+
