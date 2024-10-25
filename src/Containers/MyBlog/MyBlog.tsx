@@ -12,19 +12,20 @@ const MyBlog = () => {
   return (
     <>
       <header>
-        <ToolBar/>
+        <ToolBar />
       </header>
-      <main style={{padding: '4% 0'}}>
-        <Container maxWidth="lg" sx={{width: '84%'}}>
+      <main style={{ padding: '4% 0' }}>
+        <Container maxWidth="lg" sx={{ width: '85%' }}>
           <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/posts" element={<Home/>}></Route>
-            <Route path="/posts/:id" element={<ReadMore/>}></Route>
-            <Route path="/posts/:id/edit" element={<EditPost/>}></Route>
-            <Route path="/posts/add" element={<Add/>}></Route>
-            <Route path="/about" element={<About/>}></Route>
-            <Route path="/contacts" element={<Contacts/>}></Route>
-            <Route path="*" element={<Typography variant="h1">Not found</Typography>}></Route>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/posts" element={<Home />}>
+              <Route path=":id" element={<ReadMore />}></Route>
+              <Route path=":id/edit" element={<EditPost />} ></Route>
+            </Route>
+            <Route path="/posts/add" element={<Add />} ></Route>
+            <Route path="/about" element={<About />} ></Route>
+            <Route path="/contacts" element={<Contacts />} ></Route>
+            <Route path="*" element={<Typography variant="h1">Not found</Typography>} ></Route>
           </Routes>
         </Container>
       </main>

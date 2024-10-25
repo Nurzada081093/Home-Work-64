@@ -53,11 +53,11 @@ const FormToAddNewPost: React.FC<Props> = ({postToEdit, submitForm}) => {
   };
 
   return (
-    <form onSubmit={onSubmit} style={{border: '1px solid grey', width: '70%', margin: '0 auto', padding: '50px 0', borderRadius: '20px', backgroundColor: '#bbdefb'}}>
+    <form onSubmit={onSubmit} style={{border: '1px solid lightgrey', width: '95%', margin: '0 auto', padding: '50px 0', borderRadius: '20px', backgroundColor: 'white'}}>
       <Typography variant="h4" sx={{flexGrow: 1, textAlign: 'center', marginBottom: '20px'}}>
         {postToEdit ? 'Edit ' : 'Add new '} post
       </Typography>
-      <Grid container spacing={2} sx={{mx: 'auto', width: '50%'}}>
+      <Grid container spacing={2} sx={{mx: 'auto', width: '80%'}}>
         <Grid size={12}>
           <TextField
             sx={{width: '100%'}}
@@ -87,9 +87,6 @@ const FormToAddNewPost: React.FC<Props> = ({postToEdit, submitForm}) => {
         </Grid>
       </Grid>
     </form>
-    // <Box sx={{border: '1px solid red'}}>
-    //
-    // </Box>
   );
 };
 

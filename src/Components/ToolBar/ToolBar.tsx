@@ -22,10 +22,10 @@ const ToolBar = () => {
                         sx={{flexGrow: 1, textDecoration: 'none', padding: '18px 0'}}>
               <img src="https://bayguzin.ru/demo2023/metrobank/assets/images/logo.png" alt="metrobank"/>
             </Typography>
-            <Button color="inherit" to="/" component={NavLink}>Home</Button>
-            <Button color="inherit" to="/posts/add" component={NavLink}>Add</Button>
-            <Button color="inherit" to="/about" component={NavLink}>About</Button>
-            <Button color="inherit" to="/contacts" component={NavLink}>Contacts</Button>
+            <Button color="inherit" to="/" component={NavLink} sx={{color: 'inherit', '&.active': {fontSize: '20px'}}}>Home</Button>
+            <Button color="inherit" to="/posts/add" component={NavLink} sx={{color: 'inherit', '&.active': {fontSize: '20px'}}}>Add</Button>
+            <Button color="inherit" to="/about" component={NavLink} sx={{color: 'inherit', '&.active': {fontSize: '20px'}}}>About</Button>
+            <Button color="inherit" to="/contacts" component={NavLink} sx={{color: 'inherit', '&.active': {fontSize: '20px'}}}>Contacts</Button>
             <IconButton color="inherit" sx={{marginLeft: '20px'}}>
               <SearchIcon />
             </IconButton>
