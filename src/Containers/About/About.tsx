@@ -1,10 +1,15 @@
+import { Box } from '@mui/material';
 
 
 const About = () => {
   return (
-    <div>
+    <>
+      <Box sx={{background: 'url() center center'}}>
+        <h1></h1>
+      </Box>
+
       Страница про компанию
-    </div>
+    </>
   );
 };
 

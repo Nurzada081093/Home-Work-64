@@ -2,28 +2,34 @@ import FormToAddNewPost from '../../Components/FormToAddNewPost/FormToAddNewPost
 import { useNavigate } from 'react-router-dom';
 import { INewPost } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
+import { useState } from 'react';
+import Louder from '../../Components/UI/Louder/Louder.tsx';
 
 const Add = () => {
-
-  // const [louding, setLouding] = useState<boolean>(false);
+  const [louder, setLouder] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const submitForm = async (post: INewPost) => {
-    console.log(post);
+
     try {
-      // setLouding(true);
+      setLouder(true);
       await axiosAPI.post('posts.json', {...post});
       navigate('/');
     } catch (e) {
       console.error(e);
     } finally {
-      // setLouding(false);
+      setLouder(false);
     }
   };
 
   return (
     <>
-      <FormToAddNewPost submitForm={submitForm}/>
+      {louder ? (
+        <Louder/>
+        ) : (
+        <FormToAddNewPost submitForm={submitForm}/>
+      )
+      }
     </>
   );
 };

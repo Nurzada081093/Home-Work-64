@@ -3,14 +3,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { IPost } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
 import Post from '../../Components/Post/Post.tsx';
+import Louder from '../../Components/UI/Louder/Louder.tsx';
 
 const ReadMore = () => {
+  const [louder, setLouder] = useState<boolean>(false);
   const [onePost, setOnePost] = useState<IPost>();
   const params = useParams<{id: string}>();
 
   const getOnePost = useCallback(async (id: string) => {
 
     try {
+      setLouder(true);
       const responsePost: {data: IPost} =  await axiosAPI<IPost>(`posts/${id}.json`);
       const postInfo = responsePost.data;
 
@@ -20,6 +23,8 @@ const ReadMore = () => {
 
     } catch (e) {
       alert(e);
+    } finally {
+      setLouder(false);
     }
 
   }, []);
@@ -33,7 +38,11 @@ const ReadMore = () => {
 
   return (
     <>
-      {onePost !== undefined ? <Post post={onePost}/> : null}
+      {louder ?
+        <Louder/>
+        :
+        (onePost !== undefined ? <Post post={onePost}/> : null)
+      }
     </>
   );
 };

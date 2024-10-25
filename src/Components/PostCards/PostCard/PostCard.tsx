@@ -14,7 +14,7 @@ const PostCard: React.FC<Props> = ({post}) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: '80%', margin: '20px auto' }}>
+      <Card sx={{ maxWidth: '80%', margin: '20px auto', backgroundColor: '#64b5f6'}}>
         <CardActionArea>
           <CardContent>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>

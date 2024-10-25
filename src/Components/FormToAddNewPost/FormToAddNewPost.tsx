@@ -53,43 +53,43 @@ const FormToAddNewPost: React.FC<Props> = ({postToEdit, submitForm}) => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <Typography variant="h4" sx={{flexGrow: 1, textAlign: 'center', marginBottom: '20px'}}>
-          {postToEdit ? 'Edit ' : 'Add new '} post
-        </Typography>
-
-        <Grid container spacing={2} sx={{mx: 'auto', width: '50%'}}>
-          <Grid size={12}>
-            <TextField
-              sx={{width: '100%'}}
-              id="outlined-basic"
-              label="Title"
-              name="title"
-              variant="outlined"
-              value={newPost.title}
-              onChange={onChangeField}
-            />
-          </Grid>
-          <Grid size={12}>
-            <Textarea
-              id="outlined-basic"
-              variant="outlined"
-              placeholder="Description..."
-              minRows={5}
-              value={newPost.description}
-              name="description"
-              onChange={onChangeField}
-            />
-          </Grid>
-          <Grid size={12}>
-            <Button sx={{width: '100%'}} variant="contained" type="submit">
-              {postToEdit ? 'Edit' : 'Save'}
-            </Button>
-          </Grid>
+    <form onSubmit={onSubmit} style={{border: '1px solid grey', width: '70%', margin: '0 auto', padding: '50px 0', borderRadius: '20px', backgroundColor: '#bbdefb'}}>
+      <Typography variant="h4" sx={{flexGrow: 1, textAlign: 'center', marginBottom: '20px'}}>
+        {postToEdit ? 'Edit ' : 'Add new '} post
+      </Typography>
+      <Grid container spacing={2} sx={{mx: 'auto', width: '50%'}}>
+        <Grid size={12}>
+          <TextField
+            sx={{width: '100%'}}
+            id="outlined-basic"
+            label="Title"
+            name="title"
+            variant="outlined"
+            value={newPost.title}
+            onChange={onChangeField}
+          />
         </Grid>
-      </form>
-    </div>
+        <Grid size={12}>
+          <Textarea
+            id="outlined-basic"
+            variant="outlined"
+            placeholder="Description..."
+            minRows={5}
+            value={newPost.description}
+            name="description"
+            onChange={onChangeField}
+          />
+        </Grid>
+        <Grid size={12}>
+          <Button sx={{width: '100%'}} variant="contained" type="submit">
+            {postToEdit ? 'Edit' : 'Save'}
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
+    // <Box sx={{border: '1px solid red'}}>
+    //
+    // </Box>
   );
 };
 

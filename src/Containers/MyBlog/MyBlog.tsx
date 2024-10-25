@@ -14,18 +14,20 @@ const MyBlog = () => {
       <header>
         <ToolBar/>
       </header>
-      <Container maxWidth="lg" sx={{width: '84%'}}>
-        <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/posts" element={<Home/>}></Route>
-          <Route path="/posts/:id" element={<ReadMore/>}></Route>
-          <Route path="/posts/:id/edit" element={<EditPost />}></Route>
-          <Route path="/posts/add" element={<Add/>}></Route>
-          <Route path="/about" element={<About/>}></Route>
-          <Route path="/contacts" element={<Contacts/>}></Route>
-          <Route path="*" element={<Typography variant="h1">Not found</Typography>}></Route>
-        </Routes>
-      </Container>
+      <main style={{padding: '4% 0'}}>
+        <Container maxWidth="lg" sx={{width: '84%'}}>
+          <Routes>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/posts" element={<Home/>}></Route>
+            <Route path="/posts/:id" element={<ReadMore/>}></Route>
+            <Route path="/posts/:id/edit" element={<EditPost/>}></Route>
+            <Route path="/posts/add" element={<Add/>}></Route>
+            <Route path="/about" element={<About/>}></Route>
+            <Route path="/contacts" element={<Contacts/>}></Route>
+            <Route path="*" element={<Typography variant="h1">Not found</Typography>}></Route>
+          </Routes>
+        </Container>
+      </main>
     </>
   );
 };
