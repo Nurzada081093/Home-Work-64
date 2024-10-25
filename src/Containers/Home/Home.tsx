@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { IPost, IPostAPI } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
 import PostCards from '../../Components/PostCards/PostCards.tsx';
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Louder from '../../Components/UI/Louder/Louder.tsx';
 import { Outlet } from 'react-router-dom';
 import Grid from '@mui/material/Grid2';
@@ -40,7 +40,8 @@ const Home = () => {
   }, [getPosts]);
 
   return (
-    <>
+    <Container sx={{marginBottom: '70px'}}>
+      <Typography variant="h2" sx={{color: 'whitesmoke', fontWeight: 600, margin: '10px 0 20px 200px'}}>All posts</Typography>
       <Grid container spacing={1} sx={{display: 'flex', justifyContent: 'space-around'}}>
         <Grid size={6} sx={{marginLeft: '20px'}}>
           {louder ? (
@@ -55,8 +56,9 @@ const Home = () => {
           <Outlet />
         </Grid>
       </Grid>
-    </>
+    </Container>
   );
 };
 
 export default Home;
+

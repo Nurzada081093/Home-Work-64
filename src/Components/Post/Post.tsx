@@ -28,7 +28,7 @@ const Post: React.FC<Props> = ({post}) => {
         navigate('/');
       }
     } catch (e) {
-      console.error(e);
+      alert(e);
     } finally {
       setLouder(false);
     }
@@ -66,4 +66,5 @@ const Post: React.FC<Props> = ({post}) => {
 };
 
 export default Post;
+
 

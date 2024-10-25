@@ -1,34 +1,23 @@
-import React from 'react';
-import { BottomNavigation, BottomNavigationAction, CssBaseline } from '@mui/material';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FolderIcon from '@mui/icons-material/Folder';
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 
 const Footer = () => {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <BottomNavigation color="primary" sx={{ width: 500 }}>
-        <BottomNavigationAction
-          label="Recents"
-          value="recents"
-          icon={<RestoreIcon />}
-        />
-        <BottomNavigationAction
-          label="Favorites"
-          value="favorites"
-          icon={<FavoriteIcon />}
-        />
-        <BottomNavigationAction
-          label="Nearby"
-          value="nearby"
-          icon={<LocationOnIcon />}
-        />
-        <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
-      </BottomNavigation>
-    </React.Fragment>
+    <Box sx={{flexGrow: 1}}>
+      <AppBar position="static" sx={{background: '#263238'}}>
+        <Container maxWidth="lg">
+          <Toolbar>
+            <Typography color="inherit" to="/" variant="h6" component={NavLink}
+                        sx={{flexGrow: 1, textDecoration: 'none', padding: '20px 0 5px 0'}}>
+              <img src="https://bayguzin.ru/demo2023/metrobank/assets/images/logo.png" alt="metrobank"/>
+            </Typography>
+            <p>Copyright 2023 by MertoBank. All Right Reserved.</p>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Box>
+
   );
 };
 

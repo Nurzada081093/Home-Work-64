@@ -4,6 +4,7 @@ import { INewPost } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
 import { useState } from 'react';
 import Louder from '../../Components/UI/Louder/Louder.tsx';
+import { Container } from '@mui/material';
 
 const Add = () => {
   const [louder, setLouder] = useState<boolean>(false);
@@ -16,21 +17,21 @@ const Add = () => {
       await axiosAPI.post('posts.json', {...post});
       navigate('/');
     } catch (e) {
-      console.error(e);
+      alert(e);
     } finally {
       setLouder(false);
     }
   };
 
   return (
-    <>
+    <Container>
       {louder ? (
         <Louder/>
         ) : (
         <FormToAddNewPost submitForm={submitForm}/>
       )
       }
-    </>
+    </Container>
   );
 };
 
