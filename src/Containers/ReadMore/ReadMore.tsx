@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IPost } from '../../types';
 import axiosAPI from '../../axiosAPI.ts';
 import Post from '../../Components/Post/Post.tsx';
 
 const ReadMore = () => {
-  const [onePost, setOnePost] = React.useState<IPost>();
+  const [onePost, setOnePost] = useState<IPost>();
   const params = useParams<{id: string}>();
 
   const getOnePost = useCallback(async (id: string) => {
@@ -28,13 +28,13 @@ const ReadMore = () => {
     if (params.id !== undefined) {
       void getOnePost(params.id);
     }
-
   }, [getOnePost, params]);
 
+
   return (
-    <div>
+    <>
       {onePost !== undefined ? <Post post={onePost}/> : null}
-    </div>
+    </>
   );
 };
 

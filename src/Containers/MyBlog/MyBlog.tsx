@@ -6,6 +6,7 @@ import Add from '../Add/Add.tsx';
 import About from '../About/About.tsx';
 import Contacts from '../Contacts/Contacts.tsx';
 import ReadMore from '../ReadMore/ReadMore.tsx';
+import EditPost from '../EditPost/EditPost.tsx';
 
 const MyBlog = () => {
   return (
@@ -18,6 +19,7 @@ const MyBlog = () => {
           <Route path="/" element={<Home/>}></Route>
           <Route path="/posts" element={<Home/>}></Route>
           <Route path="/posts/:id" element={<ReadMore/>}></Route>
+          <Route path="/posts/:id/edit" element={<EditPost />}></Route>
           <Route path="/posts/add" element={<Add/>}></Route>
           <Route path="/about" element={<About/>}></Route>
           <Route path="/contacts" element={<Contacts/>}></Route>

@@ -1,9 +1,8 @@
 import { Button, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { INewPost } from '../../types';
-import axiosAPI from '../../axiosAPI.ts';
 import { Textarea } from '@mui/joy';
 
 const initialForm = {
@@ -11,8 +10,22 @@ const initialForm = {
   description: '',
 };
 
-const FormToAddNewPost = () => {
+interface Props {
+  postToEdit?: INewPost | undefined;
+  submitForm: (post: INewPost) => void;
+}
+
+const FormToAddNewPost: React.FC<Props> = ({postToEdit, submitForm}) => {
   const [newPost, setNewPost] = useState<INewPost>(initialForm);
+
+  useEffect(() => {
+    if (postToEdit) {
+      setNewPost((prevState) => ({
+        ...prevState,
+        ...postToEdit,
+      }));
+    }
+  }, [postToEdit]);
 
   const onChangeField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = e.target;
@@ -30,11 +43,11 @@ const FormToAddNewPost = () => {
     if (newPost.title.trim().length === 0 || newPost.description.trim().length === 0) {
       alert('Please enter a title and description!');
     } else {
-      try {
-        await axiosAPI.post('posts.json', {...newPost});
-        setNewPost(initialForm);
-      } catch (e) {
-        alert(e);
+
+      submitForm({...newPost});
+
+      if (!postToEdit) {
+        setNewPost({...initialForm});
       }
     }
   };
@@ -43,8 +56,7 @@ const FormToAddNewPost = () => {
     <div>
       <form onSubmit={onSubmit}>
         <Typography variant="h4" sx={{flexGrow: 1, textAlign: 'center', marginBottom: '20px'}}>
-          {/*{gameToEdit ? 'Edit ' : 'Add new '} game*/}
-          Add new post
+          {postToEdit ? 'Edit ' : 'Add new '} post
         </Typography>
 
         <Grid container spacing={2} sx={{mx: 'auto', width: '50%'}}>
@@ -72,8 +84,7 @@ const FormToAddNewPost = () => {
           </Grid>
           <Grid size={12}>
             <Button sx={{width: '100%'}} variant="contained" type="submit">
-              {/*{gameToEdit ? 'Edit' : 'Add'}*/}
-              save
+              {postToEdit ? 'Edit' : 'Save'}
             </Button>
           </Grid>
         </Grid>
@@ -83,4 +94,3 @@ const FormToAddNewPost = () => {
 };
 
 export default FormToAddNewPost;
-
